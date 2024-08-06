@@ -156,3 +156,4 @@ runs/*
 etc/
 include/
 pyvenv.cfg
+share/
