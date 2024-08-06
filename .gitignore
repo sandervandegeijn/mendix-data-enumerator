@@ -153,3 +153,6 @@ bin/
 pyvenv.cfg
 include/cd 
 runs/*
+etc/
+include/
+pyvenv.cfg
