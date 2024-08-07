@@ -1,5 +1,5 @@
 # mendix-data-enumerator
-This tool makes it possible to view exposed data in Mendix applications
+This repository contains a tool designed to scan Mendix applications for data that might be exposed publicly. The purpose of this tool is to assist developers and organizations in identifying and mitigating potential data exposure risks within their Mendix applications.
 
 ## Standalone usage
 ```
@@ -21,12 +21,6 @@ Go to http://localhost:8501/ to view the application
 Enter an URL to a Mendix application and click on "Get data" to get all exposed data.
 
 ## Disclaimer
-
-General Information
-
-This repository contains a tool designed to scan Mendix applications for data that might be exposed publicly. The purpose of this tool is to assist developers and organizations in identifying and mitigating potential data exposure risks within their Mendix applications.
-
-Usage and Liability
 
 By using this tool, you acknowledge and agree to the following terms:
 
