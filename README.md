@@ -1,4 +1,7 @@
 # mendix-data-enumerator
+
+This tool has been co-developed with Frank Spierings (Warpnet)
+
 This repository contains a tool designed to scan Mendix applications for data that might be exposed publicly. The purpose of this tool is to assist developers and organizations in identifying and mitigating potential data exposure risks within their Mendix applications.
 
 This tool only utilizes the default Mendix APIs, which are publicly documented. The security risks associated with these APIs have been known to Mendix and the community for quite some time. For further reference, please see the Computable article from March 23, 2022 discussing this issue in detail. Mendix has also shared guidelines with their account teams on the existence of this potential problem and how to mitigate it.
@@ -8,19 +11,8 @@ This tool only utilizes the default Mendix APIs, which are publicly documented. 
 python3 -m venv .
 source bin/activate
 pip install -r requirements.txt
-pip install playwright && playwright install-deps && playwright install chromium
-streamlit run webversion.py
+python mendix-client.py --domain=https://mendixapp.com --proxy=socks5://localhost:8080
 ```
-
-## Docker usage
-```
-docker build . -t mendix-data-enumerator
-docker run -p 8501:8501 mendix-data-enumerator
-```
-
-## To actually use
-Go to http://localhost:8501/ to view the application
-Enter an URL to your Mendix application and click on "Get data" to get all exposed data.
 
 ## Disclaimer
 

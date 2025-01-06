@@ -1,3 +1,3 @@
-pandas
-playwright
-streamlit
+requests
+requests[socks]
+termcolor
