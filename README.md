@@ -1,6 +1,6 @@
 # mendix-data-enumerator
 
-This tool has been co-developed with Frank Spierings (Warpnet)
+This tool has been co-developed with Frank Spierings: https://github.com/FrankSpierings
 
 This repository contains a tool designed to scan Mendix applications for data that might be exposed publicly. The purpose of this tool is to assist developers and organizations in identifying and mitigating potential data exposure risks within their Mendix applications.
 
