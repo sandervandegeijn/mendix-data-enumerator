@@ -4,6 +4,7 @@ from termcolor import colored
 import random
 import os
 import argparse
+import yaml
 
 class MendixClient:
 
@@ -283,12 +284,22 @@ def main(base_url, proxy=None, users=None, headers=None):
                 mc.find_micro_flows()
 
             # Login as different (or anonymous) user, if input is 'login username' (or 'login')
+            # Input: {'username1': 'password1', 'username2': 'password2'}
             elif instruction.startswith('login'):
                 splits = instruction.split(' ')
                 if len(splits) > 1:
                     username = splits[1]
-                    mc.login(username, users[username])
+                    if users and username in users:
+                        password = users.get(username)
+                        print(f"Logging in as {username} with password {password}")
+                        try:
+                            mc.login(username, password)
+                        except RuntimeError:
+                            print(f"Login failed for {username} and password {password}")
+                    else:
+                        print("User not found")
                 else:
+                    print(f"Logging in as anonymous")
                     mc.login()
 
             # Update an attribute of an object using: 'update <guid> <attribute name> <value>'
@@ -338,6 +349,14 @@ if __name__ == '__main__':
     domain = args.domain
     proxy = args.proxy
 
+ 
+    with open('users.yaml') as file:
+        try:
+            users_list = yaml.load(file, Loader=yaml.FullLoader)
+        except yaml.YAMLError as exc:
+            print(exc)
+            users_list = None
+
     if not domain:
         domain = input("Enter the domain to connect to: ")
 
@@ -346,4 +365,4 @@ if __name__ == '__main__':
     if domain.endswith('/'):
         domain = domain[:-1]
 
-    main(domain, proxy, None, None)
+    main(domain, proxy, users_list, None)
